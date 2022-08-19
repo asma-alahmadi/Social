@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Yemen{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/c55ef87e0b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c55ef87e0b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'social/style.css' %}">
+    {% block script %}
+    {% endblock %}
+</head>
+<body>
+<div class="flex__wrapper">
+    <div class="lay_container">
+      <nav class="nav-bar">
+
+        <div class="logo-box" id="flex">
+          <a href="{% url 'index' %}"><img src="{% static 'media/logo.png' %}" alt="Logo Image"></a>  
+        </div>
+         <input type="checkbox" id="check">
+         <label for="check" class="checkbtn"> <i class="fas fa-bars"></i> </label>
+    
+         {% if user.is_authenticated %}
+                    
+         <li class="nav-item"> <a href="{% url 'logout' %}" class="nav-items__link ">Logout</a> </li>
+         
+           
+         {% else %}
+         
+             <li class="nav-item"> <a href="{% url 'login' %}" class="nav-items__link ">Sign in</a> </li>
+           
+         {% endif %}
+       </nav>
+    
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    <footer class="footer">
+      <ul>
+        <li>Terms and conditions</li>
+        <li>Privacy policy</li>
+        <li>Contact us</li>
+      </ul>
+
+      <div class="footer__social-icons">
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </footer>
+</div>
+  
+    
+    <script>
+      function myFunction(){
+        var x = document.querySelector('#checkbox_toggle')
+
+        if(x.checked){
+
+        }
+      }
+    </script>
+</body>
+</html>

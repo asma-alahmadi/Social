@@ -1,0 +1,122 @@
+{% extends 'social/layout.html' %}
+
+{% load static %}
+
+{% block title %} Post {% endblock %}
+{% block script %}
+
+{% endblock %}
+
+{% block body %}
+<div class="singlepost nave">
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="badge bg-success text-light" style="font-size: larger;"> {{message}} </p>
+        {% endfor %}
+   {% endif %}
+ 
+   {% if post %}
+   <div class="post__box">
+
+    <p class="singlepost__content" id="content_{{ post.id }}">{{ post.post }}</p> 
+
+    {% if request.user == post.user %}
+       <button class="edit" data-postid="{{ post.id }}">Edit</button>
+   {% endif %}
+       <div class="post__like-container mt-sm">
+           <div>
+               <span class="singlepost__date">{{ post.date }}</span>
+               <span class="singlepost__auther"> By {{ post.user }}</span>
+           </div>
+       </div> 
+
+   </div>
+     
+
+        {% if post.images.all %}
+            <!--<hr style="width: 75%;"> -->
+            <div id="{{ post.id }}" class="carousel slide carousel-fade singlepost__carousel mt-lg" data-ride="carousel" data-interval="false"> 
+                <ol class="carousel-indicators">
+                   {% for img in post.images.all  %}
+                    <li data-target="#{{ post.id }}" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    {% for img in post.images.all %}
+                    <div class="carousel-item{% if forloop.counter0 == 0 %} active {% endif %}">
+                        <img class="d-block w-100" height="400px"src="{{ img.imgs.url }}" alt="Post images" style="border-radius: 3px; margin: 0 auto; object-fit: contain;">
+                    </div>
+                    {% endfor %}  
+                    </div>
+                    <a class="carousel-control-prev" href="#{{ post.id }}" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#{{ post.id }}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+            </div>   
+        {% endif %}  
+    <!--/////////////////// ADD COMMENTS /////////////////////////-->    
+       <div class="add_comment">
+           <div class="mt-lg mb-md">
+                 <h2 class="heading--2" >Add Comments</h2>
+           </div>                                   
+           
+           <form action="{% url 'comment' post.id %}" class="add_comment__form" method="POST">  
+                <textarea name="comment"  cols="30" rows="7" class="add_comment__textarea" maxlength="300" required></textarea>
+                <input type="submit" class="add_comment__submit" value="Add">
+           </form>
+       </div>
+     
+       <!--//////////// Display Comments ///////////////-->
+    
+{% if post_comments %} 
+    
+    <div class="mt-lg mb-md" style="margin-left: 1.5rem;">
+        <h2 class="heading--2" >All Comments</h2>
+    </div>  
+       {% for comment in post_comments  %}
+      
+       <div class="comment">
+
+            <p class="comment__content" id="comment_{{ comment.id }}">{{ comment.comment }}</p>
+            <div class="comment__details mt-sm">
+                <span class="comment__auther"> {{ comment.user }} </span>
+                <span> {{ comment.comment_date }} </span>
+            </div>
+            <!-- ////////////// LIKE COMMENT ////////////////// -->
+            <div class="post__like-container ">
+                <span id="like{{ comment.id }}"> <span class="comment__like--count">{{ comment.comment_like.all.count }}</span></span>
+           
+                <button class="comment__like like" data-comment_id="{{ comment.id }}" > 
+                    {% if request.user in comment.comment_like.all %}
+                        <span class="tag-{{ comment.id }}"><i class="fa-solid fa-heart post__like--red "></i></span>
+                    {% else %}    
+                        <span class="tag-{{ comment.id }}"><i class="fa-solid fa-heart post__like--white"></i></span>
+                    {% endif %}
+                </button>
+                
+           
+            </div>
+            {% if request.user == comment.user %}
+                    <button class="comment__edit" data-commentid="{{ comment.id }}">Edit</button>
+                    <a href="{% url 'delete_comment' comment.id %}" class="comment__delete">Delete</a>
+                {% endif %}
+       </div>
+       
+       {% endfor %}
+    {% endif %}
+{% endif %}
+
+  
+</div>
+
+<script src="{% static 'social/like_comment.js' %}"></script>
+<script src="{% static 'social/edit_post.js' %}"></script>
+<script src="{% static 'social/edit_comment.js' %}"></script>
+{% endblock %}
+
+

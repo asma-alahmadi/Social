@@ -1,0 +1,228 @@
+.flex__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+/////////////////////////// NAVIGATION ///////////////////////////////
+.nav-bar{
+    width: 100%;
+    background-color: #F7CCAC;//#7C3E66;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: $font-primary;
+    min-height: 7rem;
+}
+
+.nav-list{
+    margin-right: 2rem;
+    font-family: inherit;
+    margin-bottom: 0;
+}
+
+.nav-item{
+    display: inline-block;
+    margin: 0 5px;
+    font-family: inherit;
+}
+
+.nav-item a{
+    color: #000;//#411530;//$color-white;
+    text-transform: uppercase;
+    padding: .7rem 1.3rem;
+    font-size: 2rem;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.nav-item a:active, .nav-item a:hover{
+    /*background-color: #F2EBE9;
+    color: $color-white;
+    transition: .5s;*/
+    text-decoration: none;
+}
+
+.checkbtn{
+    float: right;
+    color: $color-white;
+    font-size: 3rem;
+    margin-right: 4rem;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+.logo-box{
+    height: 5rem;
+    padding-left: 1rem;
+
+    img{
+        height: 100%;
+    }
+}
+
+
+.btn{
+    border: 3px solid transparent;
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    background-color: #ccc;
+    color: $color-brown-dark;
+    transition: all .2s ease;
+
+    &:focus{
+        outline: none;
+    }
+
+    &:hover{
+        transform: scale(1.1) rotate(.5deg);
+        background-color: $color-brown-dark;
+        color: #ccc;
+    }
+}
+
+.fr-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.con-img{
+    grid-column: 1 / 4;
+    .img{
+        background-image: url(../media/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+        height: 100vh;
+        width: auto
+    }
+    
+}
+
+
+//////////// FOOTER ////////////////
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 2rem ;
+    background-color: #F7CCAC;
+    color: #000;
+
+    ul{
+        display: flex;
+
+        li{
+            list-style: none;
+            padding: 0 1.7rem;
+            transition: all .2s;
+            padding: 1.5rem;
+            cursor: pointer;
+
+            &:hover{
+                transform: translateY(-.5rem);
+                background-color: rgba(255,255,255,0.05);
+            }
+        }
+    }
+
+    &__social-icons{
+        a{
+            font-size: 2.5rem;
+            padding: 0 1.5rem;
+            color: currentColor;
+            transition: all .2s;
+
+            i{
+                transition: all .2s;
+                padding: 1.5rem;
+
+                &:hover{
+                    transform: translateY(-.5rem);
+                }
+            }
+
+           
+        }
+        
+    }
+}
+
+
+/////////////////////////// RESPONSIVE DESIGN ///////////////////////////////
+@media only screen and(max-width: $bp-small) {
+    .nav-bar{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+    }
+    .checkbtn{
+        display: block;
+    }
+
+    .nav-list{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: #ccc;
+        top: 7rem;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 100;
+    }
+
+    .nav-item{
+        display: block;
+        margin: 6rem 0;
+        font-weight: bold;
+    }
+
+    .nav-item a{
+        font-size: 2rem;
+        color: #2c3e50;
+        padding:  2rem;
+    }
+
+    .nav-item a:hover, .nav-item a:active{
+        background-color: none;
+        color: $color-white;
+        text-decoration: none;
+    }
+
+    #check:checked ~ ul{
+        left: 0;
+    }
+
+    .nav__username{
+        display: none;
+    }
+
+    .footer{
+        flex-direction: column;
+        padding:  2rem;
+
+        &__social-icons{
+            a{
+                font-size: 1.5rem;
+                padding: 0 1rem;
+
+                i{
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}

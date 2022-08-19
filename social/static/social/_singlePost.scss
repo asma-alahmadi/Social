@@ -1,0 +1,159 @@
+.singlepost{
+    padding: 5rem 10rem;
+    font-size: 1.5rem;
+    height: 100%;
+
+    &__content{
+        width: 50rem;
+        font-family: $font-primary;
+        //word-break: break-all;
+        hyphens: auto;
+    }
+
+    &__date{
+        font-size: 1.3rem;
+        color: #415870;
+    }
+
+    &__auther{
+        text-transform: capitalize;
+    }
+
+    &__carousel{
+        max-width: 75rem;
+        margin: 1rem ;
+    }
+}
+
+.post__box{
+    //margin: 0 auto;
+    width: 60rem;
+    padding: 3rem;
+    //box-shadow: 0 .7rem .5rem rgba($color-black, .3);
+    background-color: #fff;
+}
+/////////////// ADD COMMENT ////////////////////
+
+.add_comment{
+    
+    h2{
+        margin-left: 1.5rem;
+    }
+    &__form{
+        display: flex;
+        flex-direction: column;
+        width: 50rem;
+        row-gap: 1rem;
+        position: relative;
+        margin-left: 1rem;
+    }
+
+    &__textarea{
+        border: none;
+        resize: none;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        font-family: $font-primary;
+        border-radius: 3px;
+        
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__submit{
+        border: none;
+        align-self: flex-start;
+        padding: 1rem 2rem;
+        color: #758183;
+        font-family: $font-display;
+        margin-left: 1rem;
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+}
+
+
+///////////////// COMMENTS //////////////////////
+.comment{ 
+    box-shadow: 0 .7rem .5rem rgba($color-black, .3);
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    width: 50rem;
+    background-color: rgba($color-white, .4);
+
+    &__content{
+       // word-break: break-all;
+       hyphens: auto;
+    }
+
+    &__details{
+        text-transform: capitalize;
+        font-size: 1.3rem;
+        color: #415870;
+    }
+
+    &__auther{
+        margin-right: 1rem;
+        text-transform: capitalize;
+    }
+
+    &__like{
+        &--count{
+            font-size: 1.7rem;
+            font-family: $font-display;
+        }
+    }
+
+    &__edit{
+        margin-right: 1.5rem;
+        border: none;
+        cursor: pointer;
+        color: $color-brown-dark;  
+        background-color: transparent;
+        
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__delete{
+        color: $color-brown-dark;
+        &:hover{
+            text-decoration: none;
+            color: $color-brown-dark;
+        }
+    }
+
+}
+
+/////////////////////// EDIT COMMENT /////////////////////
+.edit{
+    border: none;
+    margin-top: 1rem;
+    padding: 1rem 1.7rem;
+    cursor: pointer;
+    color: #758183;
+    border-radius: 3px;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+/////////////////////////// RESPONSIVE DESIGN ///////////////////////////////
+@media only screen and(max-width: $bp-small){
+    .singlepost{
+        margin-top: 7rem;
+        padding: 2.5rem 3rem;
+    }
+    .add_comment__form{
+        width: 45rem;
+    }
+}

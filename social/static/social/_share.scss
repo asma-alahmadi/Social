@@ -1,0 +1,268 @@
+.share__body{
+    background-color: #fff;
+}
+
+.share{
+    &__container{
+        display: flex;
+        flex-direction: column;
+        //justify-content: space-between;
+        column-gap: 10rem;
+        padding: 5rem;
+
+    }
+
+    &__form{
+        width: 60rem;//50rem;
+        position: relative;
+        margin: 0 auto;
+
+        &--submit{
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: none;
+            color: #616161;
+            background-color: transparent;
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+            border-radius: 2rem;
+            position: absolute;
+            bottom: 2.5rem;
+            right: 0;
+            margin-right: 2rem;
+
+            &:hover{
+                color: #CCC;
+            }
+        }
+
+        &--label{
+            position: absolute;
+            bottom: -.5rem;
+            left: 3rem;
+            font-size: 3rem;
+        }
+    }
+    
+    &__textarea{ 
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba($color-black, .3);
+        resize: none;
+        width: 100%;
+        margin: 0 auto;
+       
+    }
+}
+
+.post{
+    box-shadow: 0 1rem 2rem rgba($color-black, .1);
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    margin: 2rem auto;
+    background-color: rgba($color-black, .1);
+    min-height: 12rem;
+    width: 60rem;
+    border-radius: .5rem;
+
+    &__content{
+        //word-break: break-all;
+        hyphens: auto;
+    }
+
+    &_img--container{
+        display: flex;
+        flex-direction: column;
+    }
+    &__img{
+        max-height: 20rem;
+        overflow: hidden;
+        object-fit: cover;
+        text-align: center;
+        display: block;
+        margin: 1rem 2rem;
+        margin-top: 1rem;
+        border-radius: .5rem;
+    }
+
+    strong{
+        text-transform: capitalize;
+        font-size: 2rem;
+    }
+
+    &__like-container{
+        display: flex;
+        align-items: center;
+        column-gap: 1rem; 
+    }
+
+
+
+    &__like{
+        border: none;
+        background-color: transparent;
+        font-size: 2rem;
+        
+        &:focus{
+            outline: none;
+        }
+
+        &--white{
+            color: #fff;
+        }
+
+        &--red{
+            color: #A11813;
+        }
+
+        &--count{
+            font-size: 1.7rem;
+        }
+    }
+
+
+    &__delete{
+        margin-right: 1.5rem;
+        color: $color-brown-dark;
+        
+
+        &:hover{
+            text-decoration: none;
+            color: $color-brown-dark;
+        }
+    }
+
+    &__details{
+        text-decoration: none;
+        color: $color-brown-dark;
+
+        &:hover{
+            text-decoration: none;
+            color: $color-brown-dark;
+        }
+    }
+}
+
+.form{
+    padding: 1.5rem 5rem;
+    grid-column: 4 / -1;
+    margin-top: 10rem;
+
+
+    display: flex;
+    flex-direction: column;
+    
+    h2{
+        margin-bottom: 2rem;
+    }
+
+    &__input{
+        //width: 50%;
+        font-size: 2rem;
+        color: rgba($color-black, .8);
+        font-family: $font-primary;  
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-bottom: 3px solid transparent;
+        display: block;
+        flex: 0 0 70%;
+        transition: all .2s;
+
+        &:focus{
+            outline: none;
+        }
+
+        &::-webkit-input-placeholder{
+            font-family: inherit;
+            font-size: inherit;
+        }
+    }
+
+    &__label{
+        font-size: 1.5rem;
+        color: $color-brown;
+        transition: all .2s;
+    }
+
+    &__input:placeholder-shown + &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    p{
+        margin: 1.5rem;
+        font-size: 1.3rem;
+        color: rgba($color-black, .8);
+
+        a{
+            text-decoration: none;
+            color: $color-brown-dark;
+        }
+    }
+}
+
+.imge{
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+}
+
+////////////////// IMAGES SLIDER ////////////////
+.carousel-control-prev{
+    left: 10%;
+}
+
+.carousel-control-next{
+    right: 10%;
+}
+
+.like{
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    
+    &:focus{
+        outline: none;
+    }
+
+    &--white{
+        color: #fff;
+    }
+
+    &--red{
+        color: #A11813;
+    }
+}
+
+/////////////////////////// RESPONSIVE DESIGN ///////////////////////////////
+
+@media only screen and (max-width: $bp-large){
+    .post{
+        width: 50rem;
+    }
+}
+
+@media only screen and (max-width: $bp-midum){
+
+    .share{
+        margin-top: 7rem; 
+
+    }
+
+    .share__container{
+        flex-direction: column;
+    }
+
+    .share__form{
+        margin: 0 auto;
+        width: 45rem;
+    }
+
+    .post{
+        width: 45rem;
+        margin: 2rem auto;
+    }
+}

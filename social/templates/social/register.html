@@ -1,0 +1,50 @@
+{%  load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'social/style.css' %}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="fr-container">
+        <div class="con-img">
+            <div class="img">&nbsp;</div>
+        </div>
+        <div class="form">
+            <div class="">
+                <h2 class="header-secondary">Register</h2>
+            </div>
+        
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+        
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                
+                    <input class="form__input" autofocus type="text" name="username" id="username" placeholder="Username">
+                    <label for="username" class="form__label"> Username</label>
+                
+                    <input class=" form__input" type="email" name="email" id="email" placeholder="Email Address">
+                    <label for="email" class="form__label"> Email Address</label>
+                
+                    <input class="form__input" type="password" name="password" id="password" placeholder="Password">
+                    <label for="password" class="form__label"> Password</label>
+                
+                    <input class=" form__input" type="password" name="confirmation" id="confirmation" placeholder="Confirm Password">
+                    <label for="confirmation" class="form__label"> Confirm Password</label>
+        
+                    <input class="btn btn-primary" type="submit" value="Register">
+            </form>
+            
+            <p class="">Already have an account? <a href="{% url 'login' %}">Log In here.</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+

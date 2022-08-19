@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@1,700&display=swap');
+
+.header-secondary{
+    font-size: 6rem;
+    font-family: 'DM Sans', sans-serif;
+    color: $color-brown-dark;
+    text-transform: capitalize;
+}
+
+.heading--2{
+    font-size: 3rem;
+    color: #B24080;//#118B9C;
+    font-family: $font-display;
+}
+.heading-3{
+    font-size: 3rem;
+    font-family: $font-display;
+    color: rgba($color-black, .7);
+}
+
+.heading--4{
+    padding: 0 2.5rem;
+    font-size: 2.5rem;
+}
+
+.u-center-text{text-align: center;}
+
+.u-center-block{margin: 0 auto;}
+
+.mb-sm{ margin-bottom: 2rem;}
+.mb-md{ margin-bottom: 3rem;}
+.mb-lg{ margin-bottom: 4rem;}
+.mb-hg{ margin-bottom: 8rem;}
+
+.mt-sm{ margin-top: 2rem;}
+.mt-md{ margin-top: 3rem;}
+.mt-lg{ margin-top: 4rem;}
+.mt-hg{ margin-top: 8rem;}
